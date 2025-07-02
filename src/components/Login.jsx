@@ -21,7 +21,7 @@ export default function Login() {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "https://travel-backend-wmxj.onrender.com/api/v1/users/login",
+        "https://travel-backend-89ey.onrender.com/api/v1/users/login",
         {
           email,
           password,
@@ -41,7 +41,7 @@ export default function Login() {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "https://travel-backend-wmxj.onrender.com/api/v1/users/register",
+        "https://travel-backend-89ey.onrender.com/api/v1/users/register",
         signupData
       );
       setSignupMessage("Account created successfully! Please login.");

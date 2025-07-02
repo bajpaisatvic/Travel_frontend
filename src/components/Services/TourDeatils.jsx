@@ -12,7 +12,7 @@ const TourDetails = () => {
     const fetchTour = async () => {
       try {
         const res = await axios.get(
-          `https://travel-backend-wmxj.onrender.com/api/v1/packages/${packageId}`,
+          `https://travel-backend-89ey.onrender.com/api/v1/packages/${packageId}`,
           { withCredentials: true }
         );
         setTour(res.data.data);

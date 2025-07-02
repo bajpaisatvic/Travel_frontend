@@ -40,7 +40,7 @@ export default function Tours() {
     const fetchPackages = async () => {
       try {
         const res = await axios.get(
-          "https://travel-backend-wmxj.onrender.com/api/v1/packages/all"
+          "https://travel-backend-89ey.onrender.com/api/v1/packages/all"
         );
         setPackages(res.data.data || []);
       } catch (err) {

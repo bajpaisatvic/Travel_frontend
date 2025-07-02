@@ -26,7 +26,7 @@ export default function AdminPanel() {
   const fetchPackages = async () => {
     try {
       const res = await axios.get(
-        "https://travel-backend-wmxj.onrender.com/api/v1/packages/all"
+        "https://travel-backend-89ey.onrender.com/api/v1/packages/all"
       );
       setPackages(res.data.data || []);
     } catch (err) {
@@ -37,7 +37,7 @@ export default function AdminPanel() {
   const fetchReviews = async () => {
     try {
       const res = await axios.get(
-        "https://travel-backend-wmxj.onrender.com/api/v1/review",
+        "https://travel-backend-89ey.onrender.com/api/v1/review",
         {
           withCredentials: true,
         }
@@ -66,10 +66,14 @@ export default function AdminPanel() {
       data.append("image", formData.image);
       data.append("price", formData.price);
 
-      await axios.post("http://localhost:4000/api/v1/packages/add", data, {
-        withCredentials: true,
-        headers: { "Content-Type": "multipart/form-data" },
-      });
+      await axios.post(
+        "https://travel-backend-89ey.onrender.com/api/v1/packages/add",
+        data,
+        {
+          withCredentials: true,
+          headers: { "Content-Type": "multipart/form-data" },
+        }
+      );
 
       setFormData({
         name: "",
@@ -87,9 +91,12 @@ export default function AdminPanel() {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:4000/api/v1/packages/${id}`, {
-        withCredentials: true,
-      });
+      await axios.delete(
+        `https://travel-backend-89ey.onrender.com/api/v1/packages/${id}`,
+        {
+          withCredentials: true,
+        }
+      );
       fetchPackages();
     } catch (err) {
       console.error("Delete failed", err);
