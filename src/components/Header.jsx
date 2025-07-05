@@ -111,7 +111,7 @@ export default function Header() {
                 <NavLink
                   to="/"
                   className={({ isActive, isPending }) =>
-                    `block py-2 pr-4 pl-3 duration-200 border-b border-gray-100 ${
+                    `block py-2 pr-4 pl-3 duration-200  ${
                       isActive ? "text-blue-700" : "text-gray-700"
                     } lg:hover:bg-transparent lg:border-0 hover:text-blue-700 lg:p-0 dark:text-white`
                   }
@@ -123,7 +123,7 @@ export default function Header() {
                 <NavLink
                   to="/about"
                   className={({ isActive, isPending }) =>
-                    `block py-2 pr-4 pl-3 duration-200 border-b border-gray-100 ${
+                    `block py-2 pr-4 pl-3 duration-200  ${
                       isActive ? "text-blue-700" : "text-gray-700"
                     } lg:hover:bg-transparent lg:border-0 hover:text-blue-700 lg:p-0  dark:text-white`
                   }
@@ -134,7 +134,7 @@ export default function Header() {
               <li className="relative" ref={dropdownRef}>
                 <button
                   onClick={() => setDropdownOpen(!dropdownOpen)}
-                  className="block py-2 pr-4 pl-3 duration-200 border-b border-gray-100 text-gray-700 lg:hover:bg-transparent lg:border-0 hover:text-blue-700 lg:p-0  dark:text-white"
+                  className="block py-2 pr-4 pl-3 duration-200  text-gray-700 lg:hover:bg-transparent lg:border-0 hover:text-blue-700 lg:p-0  dark:text-white"
                 >
                   Our Services
                 </button>
@@ -175,7 +175,7 @@ export default function Header() {
                 <NavLink
                   to="/contact"
                   className={({ isActive, isPending }) =>
-                    `block py-2 pr-4 pl-3 duration-200 border-b border-gray-100 ${
+                    `block py-2 pr-4 pl-3 duration-200  ${
                       isActive ? "text-blue-700" : "text-gray-700"
                     } lg:hover:bg-transparent lg:border-0 hover:text-blue-700 lg:p-0 dark:text-white`
                   }
@@ -188,7 +188,7 @@ export default function Header() {
                   <NavLink
                     to={location.pathname.startsWith("/admin") ? "/" : "/admin"}
                     className={({ isActive }) =>
-                      `block py-2 pr-4 pl-3 duration-200 border-b border-gray-100 ${
+                      `block py-2 pr-4 pl-3 duration-200  ${
                         isActive ? "text-blue-700" : "text-gray-700"
                       } lg:hover:bg-transparent lg:border-0 hover:text-blue-700 lg:p-0 dark:text-white`
                     }
