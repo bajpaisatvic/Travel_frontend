@@ -10,6 +10,8 @@ export default function Header() {
   const navigate = useNavigate();
   const { isAdmin } = useAuth();
   const location = useLocation();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   const [darkMode, setDarkMode] = useState(
     () => localStorage.getItem("theme") === "dark"
   );
@@ -49,6 +51,28 @@ export default function Header() {
               alt="Logo"
             />
           </Link>
+          <button
+            onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+            className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+            aria-controls="mobile-menu"
+            aria-expanded={isMobileMenuOpen}
+          >
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
+
           <div className="flex items-center lg:order-2">
             <button
               onClick={toggleDarkMode}
@@ -77,8 +101,10 @@ export default function Header() {
             )}
           </div>
           <div
-            className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1"
-            id="mobile-menu-2"
+            className={`${
+              isMobileMenuOpen ? "block" : "hidden"
+            } justify-between items-center w-full md:flex md:w-auto md:order-1`}
+            id="mobile-menu"
           >
             <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
               <li>
