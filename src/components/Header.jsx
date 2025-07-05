@@ -53,7 +53,7 @@ export default function Header() {
           </Link>
           <button
             onClick={() => setIsMobileMenuOpen((prev) => !prev)}
-            className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+            className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
             aria-controls="mobile-menu"
             aria-expanded={isMobileMenuOpen}
           >
@@ -103,7 +103,7 @@ export default function Header() {
           <div
             className={`${
               isMobileMenuOpen ? "block" : "hidden"
-            } justify-between items-center w-full md:flex md:w-auto md:order-1`}
+            } justify-between items-center w-full lg:flex lg:w-auto lg:order-1`}
             id="mobile-menu"
           >
             <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
