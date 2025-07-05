@@ -2,16 +2,18 @@ import React from "react";
 
 export default function About() {
   return (
-    <div className="p-8 bg-white">
+    <div className="p-8 bg-white dark:bg-gray-900">
       {/* <h2 className="text-3xl font-bold text-center mb-8">About Us</h2> */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-        <div className="w-full h-96 p-6 rounded-lg  bg-white flex flex-col items-start">
-          <p className="text-sm text-gray-800 mb-2 font-bold uppercase tracking-wide">
+        <div className="w-full h-96 p-6 rounded-lg  bg-white dark:bg-gray-900 flex flex-col items-start">
+          <p className="text-sm text-gray-800 dark:text-white mb-2 font-bold uppercase tracking-wide">
             So glad you are here
           </p>
-          <h2 className="text-5xl font-bold text-gray-800">About Us</h2>
+          <h2 className="text-5xl font-bold text-gray-800 dark:text-white">
+            About Us
+          </h2>
           <div className="w-full h-1 bg-blue-600 my-3"></div>
-          <p className="text-gray-600 text-lg">
+          <p className="text-gray-600 dark:text-white text-lg">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum
             veritatis labore consequuntur corporis, quis autem distinctio atque.
             Quam facilis sapiente consectetur accusantium, vero repellendus

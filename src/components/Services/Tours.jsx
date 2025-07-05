@@ -40,7 +40,7 @@ export default function Tours() {
     const fetchPackages = async () => {
       try {
         const res = await axios.get(
-          "https://travel-backend-89ey.onrender.com/api/v1/packages/all"
+          "https://travel-backend-1-s4yu.onrender.com/api/v1/packages/all"
         );
         setPackages(res.data.data || []);
       } catch (err) {
@@ -56,10 +56,12 @@ export default function Tours() {
   );
 
   return (
-    <div className="min-h-screen flex bg-gray-50">
+    <div className="min-h-screen flex dark:bg-gray-800 bg-gray-50">
       {/* Left Sidebar */}
-      <div className="w-1/4 p-6 bg-white shadow-lg border-r">
-        <h2 className="text-2xl font-bold mb-6 text-blue-700">Categories</h2>
+      <div className="w-1/4 p-6 bg-white dark:bg-gray-700 shadow-lg border-r dark:border-r-black">
+        <h2 className="text-2xl font-bold mb-6 dark:text-gray-200 text-blue-700">
+          Categories
+        </h2>
         <ul className="space-y-3">
           {categories.map((cat) => (
             <li key={cat.name}>
@@ -67,8 +69,8 @@ export default function Tours() {
                 onClick={() => setSelectedCategory(cat)}
                 className={`w-full text-left px-4 py-2 rounded-md font-medium ${
                   selectedCategory.name === cat.name
-                    ? "bg-blue-100 text-blue-700"
-                    : "text-gray-700 hover:bg-gray-100"
+                    ? "bg-blue-100 text-blue-700 dark:bg-gray-600 dark:text-gray-100"
+                    : "text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600"
                 }`}
               >
                 {cat.name}
@@ -80,17 +82,19 @@ export default function Tours() {
 
       {/* Right Section */}
       <div className="w-3/4 p-8">
-        <h1 className="text-5xl text-center font-bold text-gray-800 mb-4">
+        <h1 className="text-5xl text-center font-bold dark:text-white text-gray-800 mb-4">
           {selectedCategory.name} Tours
         </h1>
-        <p className="text-gray-600 mb-6">{selectedCategory.about}</p>
+        <p className="text-gray-600 dark:text-gray-200 mb-6">
+          {selectedCategory.about}
+        </p>
 
         {filteredPackages.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredPackages.map((pkg) => (
               <div
                 key={pkg.id}
-                className="bg-white rounded-lg shadow hover:shadow-lg transition overflow-hidden"
+                className="bg-white dark:bg-gray-600 rounded-lg shadow hover:shadow-lg transition overflow-hidden"
               >
                 <img
                   src={pkg.image}
@@ -98,14 +102,14 @@ export default function Tours() {
                   className="h-48 w-full object-cover"
                 />
                 <div className="p-4">
-                  <h3 className="text-lg font-semibold text-gray-800">
+                  <h3 className="text-lg font-semibold dark:text-white text-gray-800">
                     {pkg.name}
                   </h3>
-                  <p className="text-gray-600 text-sm mt-1">
+                  <p className="text-gray-600 dark:text-gray-200 text-sm mt-1">
                     {pkg.description.substring(0, 80)}...
                   </p>
                   <Link to={`/services/tours/${pkg._id}`}>
-                    <button className="mt-3 text-blue-600 hover:underline font-medium">
+                    <button className="mt-3 text-blue-600 dark:text-blue-400 hover:underline font-medium">
                       View Details
                     </button>
                   </Link>

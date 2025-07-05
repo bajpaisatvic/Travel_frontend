@@ -21,7 +21,7 @@ export default function Login() {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "https://travel-backend-89ey.onrender.com/api/v1/users/login",
+        "https://travel-backend-1-s4yu.onrender.com/api/v1/users/login",
         {
           email,
           password,
@@ -41,7 +41,7 @@ export default function Login() {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "https://travel-backend-89ey.onrender.com/api/v1/users/register",
+        "https://travel-backend-1-s4yu.onrender.com/api/v1/users/register",
         signupData
       );
       setSignupMessage("Account created successfully! Please login.");
@@ -56,11 +56,13 @@ export default function Login() {
         backgroundImage: `url("https://images.pexels.com/photos/731217/pexels-photo-731217.jpeg")`,
       }}
     >
-      <div className="w-full max-w-5xl bg-white/70 backdrop-blur-md shadow-lg rounded-lg overflow-hidden flex flex-col md:flex-row">
+      <div className="w-full max-w-5xl bg-white/70 dark:bg-gray-700 backdrop-blur-md shadow-lg rounded-lg overflow-hidden flex flex-col md:flex-row">
         {/* Login Section */}
         <div className="w-full md:w-1/2 p-8">
-          <h2 className="text-3xl font-bold text-gray-800 mb-4">Login</h2>
-          <p className="text-gray-600 mb-6">
+          <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-4">
+            Login
+          </h2>
+          <p className="text-gray-600 dark:text-gray-200 mb-6">
             Welcome back! Please enter your details.
           </p>
 
@@ -68,7 +70,7 @@ export default function Login() {
             <div>
               <label
                 htmlFor="email"
-                className="block text-gray-700 font-medium"
+                className="block text-gray-700 dark:text-gray-100 font-medium"
               >
                 Email
               </label>
@@ -76,7 +78,7 @@ export default function Login() {
                 type="email"
                 id="email"
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+                className="w-full px-4 py-2 mt-1 dark:bg-gray-400 dark:placeholder-gray-700 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
                 placeholder="you@example.com"
               />
             </div>
@@ -84,7 +86,7 @@ export default function Login() {
             <div>
               <label
                 htmlFor="password"
-                className="block text-gray-700 font-medium"
+                className="block text-gray-700 dark:text-gray-100 font-medium"
               >
                 Password
               </label>
@@ -92,7 +94,7 @@ export default function Login() {
                 type="password"
                 id="password"
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+                className="w-full px-4 py-2 mt-1 dark:bg-gray-400 dark:placeholder-gray-700 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
                 placeholder="Enter your password"
               />
             </div>
@@ -106,14 +108,23 @@ export default function Login() {
 
         {/* Signup Section */}
         <div className="w-full md:w-1/2 bg-transparent p-8">
-          <h2 className="text-3xl font-bold text-blue-800 mb-4">Sign Up</h2>
-          <p className="text-blue-700 mb-6">
+          <h2
+            className="text-3xl font-bold dark:text-blue-600
+
+           text-blue-800 mb-4"
+          >
+            Sign Up
+          </h2>
+          <p className="text-blue-700 dark:text-blue-500 mb-6">
             New here? Create an account to get started.
           </p>
 
           <form onSubmit={handleSignup} className="space-y-4">
             <div>
-              <label htmlFor="name" className="block text-blue-800 font-medium">
+              <label
+                htmlFor="name"
+                className="block text-blue-800 dark:text-blue-600 font-medium"
+              >
                 Full Name
               </label>
               <input
@@ -123,7 +134,7 @@ export default function Login() {
                   setSignupData({ ...signupData, name: e.target.value })
                 }
                 id="name"
-                className="w-full px-4 py-2 mt-1 border border-blue-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+                className="w-full px-4 py-2 mt-1 dark:bg-gray-400 dark:placeholder-gray-700 border border-blue-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
                 placeholder="Your full name"
               />
             </div>
@@ -131,7 +142,7 @@ export default function Login() {
             <div>
               <label
                 htmlFor="signup-email"
-                className="block text-blue-800 font-medium"
+                className="block text-blue-800 dark:text-blue-600 font-medium"
               >
                 Email
               </label>
@@ -142,7 +153,7 @@ export default function Login() {
                 onChange={(e) =>
                   setSignupData({ ...signupData, email: e.target.value })
                 }
-                className="w-full px-4 py-2 mt-1 border border-blue-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+                className="w-full px-4 py-2 mt-1 dark:bg-gray-400 dark:placeholder-gray-700 border border-blue-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
                 placeholder="you@example.com"
               />
             </div>
@@ -150,7 +161,7 @@ export default function Login() {
             <div>
               <label
                 htmlFor="signup-password"
-                className="block text-blue-800 font-medium"
+                className="block text-blue-800 dark:text-blue-600 font-medium"
               >
                 Password
               </label>
@@ -161,7 +172,7 @@ export default function Login() {
                 onChange={(e) =>
                   setSignupData({ ...signupData, password: e.target.value })
                 }
-                className="w-full px-4 py-2 mt-1 border border-blue-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+                className="w-full px-4 py-2 mt-1 dark:bg-gray-400 dark:placeholder-gray-700 border border-blue-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
                 placeholder="Create a password"
               />
             </div>

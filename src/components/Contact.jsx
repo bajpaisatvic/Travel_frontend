@@ -22,7 +22,7 @@ export default function Contact() {
 
     try {
       const res = await axios.post(
-        "https://travel-backend-89ey.onrender.com/api/v1/review",
+        "https://travel-backend-1-s4yu.onrender.com/api/v1/review",
         formData
       );
 
@@ -44,25 +44,25 @@ export default function Contact() {
   };
 
   return (
-    <div className="w-full min-h-[700px] bg-white px-4 md:px-12 py-12">
+    <div className="w-full min-h-[700px] bg-white dark:bg-gray-900 px-4 md:px-12 py-12">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-7xl mx-auto">
         {/* Left Side - Contact Info */}
-        <div className="bg-gray-100 p-6 rounded-lg shadow-md">
-          <h1 className="text-3xl sm:text-4xl text-gray-800 font-extrabold tracking-tight">
+        <div className="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-md">
+          <h1 className="text-3xl sm:text-4xl text-gray-800 dark:text-white font-extrabold tracking-tight">
             Get in touch:
           </h1>
-          <p className="text-normal text-lg sm:text-xl font-medium text-gray-600 mt-2">
+          <p className="text-normal text-lg sm:text-xl font-medium dark:text-gray-200 text-gray-600 mt-2">
             Fill in the form to start a conversation
           </p>
 
-          <div className="flex items-center mt-8 text-gray-600">
+          <div className="flex items-center mt-8 dark:text-gray-200 text-gray-600">
             {/* Location icon */}
             <svg
               fill="none"
               stroke="currentColor"
               strokeWidth="1.5"
               viewBox="0 0 24 24"
-              className="w-8 h-8 text-gray-500"
+              className="w-8 h-8 dark:text-gray-300 text-gray-500"
             >
               <path
                 strokeLinecap="round"
@@ -78,14 +78,14 @@ export default function Contact() {
             <div className="ml-4 font-semibold w-40">Bumped Travels, India</div>
           </div>
 
-          <div className="flex items-center mt-4 text-gray-600">
+          <div className="flex items-center mt-4 dark:text-gray-200 text-gray-600">
             {/* Phone icon */}
             <svg
               fill="none"
               stroke="currentColor"
               strokeWidth="1.5"
               viewBox="0 0 24 24"
-              className="w-8 h-8 text-gray-500"
+              className="w-8 h-8 dark:text-gray-300 text-gray-500"
             >
               <path
                 strokeLinecap="round"
@@ -96,14 +96,14 @@ export default function Contact() {
             <div className="ml-4 font-semibold w-40">+91 9876543210</div>
           </div>
 
-          <div className="flex items-center mt-4 text-gray-600">
+          <div className="flex items-center mt-4 dark:text-gray-200 text-gray-600">
             {/* Email icon */}
             <svg
               fill="none"
               stroke="currentColor"
               strokeWidth="1.5"
               viewBox="0 0 24 24"
-              className="w-8 h-8 text-gray-500"
+              className="w-8 h-8 dark:text-gray-300 text-gray-500"
             >
               <path
                 strokeLinecap="round"
@@ -120,7 +120,7 @@ export default function Contact() {
         {/* Right Side - Contact Form */}
         <form
           onSubmit={handleSubmit}
-          className="bg-white p-6 rounded-lg shadow-md"
+          className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md "
         >
           <div className="flex flex-col mb-4">
             <label htmlFor="name" className="hidden">
@@ -133,7 +133,9 @@ export default function Contact() {
               onChange={handleChange}
               id="name"
               placeholder="Full Name"
-              className="py-3 px-4 rounded-lg border border-gray-400 focus:border-blue-500 outline-none"
+              className="py-3 px-4 rounded-lg border dark:bg-gray-400 dark:text-black
+               border-gray-400 focus:border-blue-500 outline-none  placeholder-gray-500 
+             dark:placeholder-gray-700 "
             />
           </div>
 
@@ -148,7 +150,8 @@ export default function Contact() {
               value={formData.email}
               onChange={handleChange}
               placeholder="Email"
-              className="py-3 px-4 rounded-lg border border-gray-400 focus:border-blue-500 outline-none"
+              className="py-3 px-4 rounded-lg  dark:bg-gray-400 dark:text-black border border-gray-400 focus:border-blue-500 outline-none  placeholder-gray-500 
+             dark:placeholder-gray-700 "
             />
           </div>
 
@@ -163,7 +166,8 @@ export default function Contact() {
               value={formData.phoneNumber}
               onChange={handleChange}
               placeholder="Phone Number"
-              className="py-3 px-4 rounded-lg border border-gray-400 focus:border-blue-500 outline-none"
+              className="py-3 px-4 rounded-lg  dark:bg-gray-400 dark:text-black border border-gray-400 focus:border-blue-500 outline-none  placeholder-gray-500 
+             dark:placeholder-gray-700 "
             />
           </div>
 
@@ -179,7 +183,8 @@ export default function Contact() {
               value={formData.message}
               onChange={handleChange}
               placeholder="Your Message / Query"
-              className="py-3 px-4 rounded-lg border border-gray-400 focus:border-blue-500 outline-none resize-none"
+              className="py-3 px-4 rounded-lg  dark:bg-gray-400 dark:text-black border border-gray-400 focus:border-blue-500 outline-none resize-none  placeholder-gray-500 
+             dark:placeholder-gray-700 "
             ></textarea>
           </div>
 

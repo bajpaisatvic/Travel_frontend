@@ -16,7 +16,7 @@ function Home() {
   ];
 
   return (
-    <div className="w-full min-h-screen">
+    <div className="w-full min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
       <Swiper
         modules={[Navigation, Autoplay, EffectFade]}
         navigation

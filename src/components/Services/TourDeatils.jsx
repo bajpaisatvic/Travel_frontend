@@ -12,7 +12,7 @@ const TourDetails = () => {
     const fetchTour = async () => {
       try {
         const res = await axios.get(
-          `https://travel-backend-89ey.onrender.com/api/v1/packages/${packageId}`,
+          `https://travel-backend-1-s4yu.onrender.com/api/v1/packages/${packageId}`,
           { withCredentials: true }
         );
         setTour(res.data.data);
@@ -33,14 +33,14 @@ const TourDetails = () => {
 
   if (!tour) {
     return (
-      <div className="p-10 text-gray-500 text-center text-lg">
+      <div className="p-10 text-gray-500 dark:text-white text-center text-lg">
         Loading tour details...
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white py-10">
+    <div className="min-h-screen dark:bg-gradient-to-b dark:from-gray-800 dark:to-gray-900 bg-gradient-to-b from-blue-50 to-white py-10">
       {/* Header Image */}
       <div className="w-11/12 max-w-6xl mx-auto overflow-hidden rounded-xl shadow-lg">
         <img
@@ -51,18 +51,21 @@ const TourDetails = () => {
       </div>
 
       {/* Content Section */}
-      <div className="w-11/12 max-w-4xl mx-auto bg-white mt-10 p-8 rounded-xl shadow-md">
-        <h1 className="text-4xl md:text-5xl font-bold text-center text-blue-800 mb-6">
+      <div className="w-11/12 max-w-4xl mx-auto dark:bg-gray-700 bg-white mt-10 p-8 rounded-xl shadow-md">
+        <h1 className="text-4xl md:text-5xl font-bold text-center dark:text-white text-blue-800 mb-6">
           {tour.name}
         </h1>
 
-        <p className="text-lg font-semibold text-gray-700 leading-relaxed text-justify">
+        <p className="text-lg font-semibold dark:text-gray-200 text-gray-700 leading-relaxed text-justify">
           {tour.description}
         </p>
 
         {/* Price */}
         {tour.price && (
-          <p className="text-2xl text-blue-600 font-bold text-center mt-6">
+          <p
+            className="text-2xl text-blue-600 dark:text-blue-200
+           font-bold text-center mt-6"
+          >
             ₹{tour.price}
           </p>
         )}
@@ -78,7 +81,7 @@ const TourDetails = () => {
 
         {/* Contact Us CTA */}
         <div className="mt-10 text-center">
-          <p className="text-gray-700 text-md mb-4 font-medium">
+          <p className="text-gray-700 dark:text-gray-200 text-md mb-4 font-medium">
             For further queries or customization, feel free to reach out.
           </p>
           <button

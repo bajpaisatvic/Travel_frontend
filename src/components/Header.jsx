@@ -10,6 +10,17 @@ export default function Header() {
   const navigate = useNavigate();
   const { isAdmin } = useAuth();
   const location = useLocation();
+  const [darkMode, setDarkMode] = useState(
+    () => localStorage.getItem("theme") === "dark"
+  );
+
+  const toggleDarkMode = () => {
+    const newTheme = darkMode ? "light" : "dark";
+    setDarkMode(!darkMode);
+    localStorage.setItem("theme", newTheme);
+    document.documentElement.classList.toggle("dark", newTheme === "dark");
+  };
+
   const handleLogout = async () => {
     await logout();
     navigate("/");
@@ -29,7 +40,7 @@ export default function Header() {
 
   return (
     <header className="shadow sticky z-50 top-0">
-      <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5">
+      <nav className="transition-all duration-300 ease-in-out bg-white dark:bg-gray-900 text-gray-900 dark:text-white border-gray-200 px-4 lg:px-6 py-2.5">
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
           <Link to="/" className="flex items-center">
             <img
@@ -39,6 +50,14 @@ export default function Header() {
             />
           </Link>
           <div className="flex items-center lg:order-2">
+            <button
+              onClick={toggleDarkMode}
+              className="text-gray-700 dark:text-white border border-gray-300 dark:border-white px-4 lg:px-5 py-2 lg:py-2.5 font-medium rounded-lg text-sm hover:bg-gray-100 dark:hover:bg-gray-700 transition mr-4"
+              title="Toggle Dark Mode"
+            >
+              {darkMode ? "☀️ Light" : "🌙 Dark"}
+            </button>
+
             {loggedIn ? (
               <button
                 onClick={handleLogout}
@@ -50,7 +69,7 @@ export default function Header() {
             ) : (
               <Link
                 to="/login"
-                className="flex items-center gap-2 text-gray-800 hover:bg-gray-300 focus:ring-4 focus:ring-gray-500 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 focus:outline-none"
+                className="flex items-center gap-2 text-gray-800 hover:bg-gray-300 dark:text-gray-100 dark:hover:bg-gray-500 focus:ring-4 focus:ring-gray-500 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 focus:outline-none"
               >
                 <HiOutlineLogin className="text-lg" />
                 Log in
@@ -68,7 +87,7 @@ export default function Header() {
                   className={({ isActive, isPending }) =>
                     `block py-2 pr-4 pl-3 duration-200 border-b border-gray-100 ${
                       isActive ? "text-blue-700" : "text-gray-700"
-                    } lg:hover:bg-transparent lg:border-0 hover:text-blue-700 lg:p-0`
+                    } lg:hover:bg-transparent lg:border-0 hover:text-blue-700 lg:p-0 dark:text-white`
                   }
                 >
                   Home
@@ -80,7 +99,7 @@ export default function Header() {
                   className={({ isActive, isPending }) =>
                     `block py-2 pr-4 pl-3 duration-200 border-b border-gray-100 ${
                       isActive ? "text-blue-700" : "text-gray-700"
-                    } lg:hover:bg-transparent lg:border-0 hover:text-blue-700 lg:p-0`
+                    } lg:hover:bg-transparent lg:border-0 hover:text-blue-700 lg:p-0  dark:text-white`
                   }
                 >
                   About
@@ -89,16 +108,16 @@ export default function Header() {
               <li className="relative" ref={dropdownRef}>
                 <button
                   onClick={() => setDropdownOpen(!dropdownOpen)}
-                  className="block py-2 pr-4 pl-3 duration-200 border-b border-gray-100 text-gray-700 lg:hover:bg-transparent lg:border-0 hover:text-blue-700 lg:p-0"
+                  className="block py-2 pr-4 pl-3 duration-200 border-b border-gray-100 text-gray-700 lg:hover:bg-transparent lg:border-0 hover:text-blue-700 lg:p-0  dark:text-white"
                 >
                   Our Services
                 </button>
                 {dropdownOpen && (
-                  <ul className="absolute bg-white text-gray-700 border rounded-md shadow-lg mt-2 w-40 z-50">
+                  <ul className="absolute bg-white dark:bg-gray-900  dark:text-white text-gray-700 border rounded-md shadow-lg mt-2 w-40 z-50">
                     <li>
                       <NavLink
                         to="/services/tours"
-                        className="block px-4 py-2 hover:bg-gray-100"
+                        className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
                         onClick={() => setDropdownOpen(false)}
                       >
                         Tour Packages
@@ -107,7 +126,7 @@ export default function Header() {
                     <li>
                       <NavLink
                         to="/services/flights"
-                        className="block px-4 py-2 hover:bg-gray-100"
+                        className="block px-4 py-2 hover:bg-gray-100  dark:hover:bg-gray-700"
                         onClick={() => setDropdownOpen(false)}
                       >
                         Flight Booking
@@ -116,7 +135,7 @@ export default function Header() {
                     <li>
                       <NavLink
                         to="/services/hotels"
-                        className="block px-4 py-2 hover:bg-gray-100"
+                        className="block px-4 py-2 hover:bg-gray-100  dark:hover:bg-gray-700"
                         onClick={() => setDropdownOpen(false)}
                       >
                         Hotel Booking
@@ -132,7 +151,7 @@ export default function Header() {
                   className={({ isActive, isPending }) =>
                     `block py-2 pr-4 pl-3 duration-200 border-b border-gray-100 ${
                       isActive ? "text-blue-700" : "text-gray-700"
-                    } lg:hover:bg-transparent lg:border-0 hover:text-blue-700 lg:p-0`
+                    } lg:hover:bg-transparent lg:border-0 hover:text-blue-700 lg:p-0 dark:text-white`
                   }
                 >
                   Contact Us
@@ -145,7 +164,7 @@ export default function Header() {
                     className={({ isActive }) =>
                       `block py-2 pr-4 pl-3 duration-200 border-b border-gray-100 ${
                         isActive ? "text-blue-700" : "text-gray-700"
-                      } lg:hover:bg-transparent lg:border-0 hover:text-blue-700 lg:p-0`
+                      } lg:hover:bg-transparent lg:border-0 hover:text-blue-700 lg:p-0 dark:text-white`
                     }
                   >
                     {location.pathname.startsWith("/admin")
