@@ -7,15 +7,18 @@ const TourDetails = () => {
   const navigate = useNavigate();
   const [tour, setTour] = useState(null);
   const [error, setError] = useState("");
-
+  const [isDescriptionImage, setIsDescriptionImage] = useState(false);
+  const backendURL = import.meta.env.VITE_PRODUCTION_URL_URL;
   useEffect(() => {
     const fetchTour = async () => {
       try {
-        const res = await axios.get(
-          `https://travel-backend-1-s4yu.onrender.com/api/v1/packages/${packageId}`,
-          { withCredentials: true }
-        );
+        const res = await axios.get(`${backendURL}/packages/${packageId}`, {
+          withCredentials: true,
+        });
         setTour(res.data.data);
+        if (res.data.data.descriptionImage !== "") {
+          setIsDescriptionImage(true);
+        }
       } catch (err) {
         setError("Oops! Failed to load tour details. Please try again.");
         console.error(err);
@@ -59,6 +62,16 @@ const TourDetails = () => {
         <p className="text-lg font-semibold dark:text-gray-200 text-gray-700 leading-relaxed text-justify">
           {tour.description}
         </p>
+
+        {isDescriptionImage && (
+          <div className="mt-6 flex justify-center">
+            <img
+              src={tour.descriptionImage}
+              alt=""
+              className="rounded-lg shadow-lg max-h-[500px] "
+            />
+          </div>
+        )}
 
         {/* Price */}
         {tour.price && (

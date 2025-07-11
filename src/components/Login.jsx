@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/authContext.jsx";
+
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const backendURL = import.meta.env.VITE_PRODUCTION_URL_URL;
   const [signupData, setSignupData] = useState({
     name: "",
     email: "",
@@ -21,7 +23,7 @@ export default function Login() {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "https://travel-backend-1-s4yu.onrender.com/api/v1/users/login",
+        `${backendURL}/users/login`,
         {
           email,
           password,
@@ -40,10 +42,7 @@ export default function Login() {
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(
-        "https://travel-backend-1-s4yu.onrender.com/api/v1/users/register",
-        signupData
-      );
+      const res = await axios.post(`${backendURL}/users/register`, signupData);
       setSignupMessage("Account created successfully! Please login.");
     } catch (err) {
       setSignupMessage("Email already exists or error occurred");

@@ -2,14 +2,15 @@ import { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
 
 const AuthContext = createContext();
-
+const backendURL = import.meta.env.VITE_PRODUCTION_URL_URL;
 export const AuthProvider = ({ children }) => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
   const checkAuth = async () => {
     try {
       const res = await axios.get(
-        "https://travel-backend-1-s4yu.onrender.com/api/v1/users/check-auth",
+        `${backendURL}/users/check-auth`,
+
         {
           withCredentials: true,
         }
@@ -24,7 +25,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = async () => {
     await axios.post(
-      "https://travel-backend-1-s4yu.onrender.com/api/v1/users/logout",
+      `${backendURL}/users/logout`,
       {},
       { withCredentials: true }
     );

@@ -20,15 +20,18 @@ export default function AdminPanel() {
     name: "",
     description: "",
     image: "",
+    descriptionImage: "",
     category: categories[0],
     price: "",
   });
+  const cloneFile = (file, newName) => {
+    return new File([file], newName, { type: file.type });
+  };
 
+  const backendURL = import.meta.env.VITE_PRODUCTION_URL_URL;
   const fetchPackages = async () => {
     try {
-      const res = await axios.get(
-        "https://travel-backend-1-s4yu.onrender.com/api/v1/packages/all"
-      );
+      const res = await axios.get(`${backendURL}/packages/all`);
       setPackages(res.data.data || []);
     } catch (err) {
       console.error("Failed to fetch packages", err);
@@ -37,12 +40,9 @@ export default function AdminPanel() {
 
   const fetchReviews = async () => {
     try {
-      const res = await axios.get(
-        "https://travel-backend-1-s4yu.onrender.com/api/v1/review",
-        {
-          withCredentials: true,
-        }
-      );
+      const res = await axios.get(`${backendURL}/review`, {
+        withCredentials: true,
+      });
       setReviews(res.data.data || []);
     } catch (err) {
       console.error("Failed to fetch reviews", err);
@@ -59,6 +59,7 @@ export default function AdminPanel() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
       const data = new FormData();
       data.append("name", formData.name);
@@ -66,20 +67,24 @@ export default function AdminPanel() {
       data.append("category", formData.category);
       data.append("image", formData.image);
       data.append("price", formData.price);
+      if (formData.descriptionImage) {
+        const descriptionFileRenamed = cloneFile(
+          formData.descriptionImage,
+          "description-" + formData.descriptionImage.name
+        );
+        data.append("descriptionImage", descriptionFileRenamed);
+      }
 
-      await axios.post(
-        "https://travel-backend-1-s4yu.onrender.com/api/v1/packages/add",
-        data,
-        {
-          withCredentials: true,
-          headers: { "Content-Type": "multipart/form-data" },
-        }
-      );
+      await axios.post(`${backendURL}/packages/add`, data, {
+        withCredentials: true,
+        headers: { "Content-Type": "multipart/form-data" },
+      });
 
       setFormData({
         name: "",
         description: "",
         image: "",
+        descriptionImage: "",
         category: categories[0],
         price: "",
       });
@@ -92,12 +97,9 @@ export default function AdminPanel() {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(
-        `https://travel-backend-1-s4yu.onrender.com/api/v1/packages/${id}`,
-        {
-          withCredentials: true,
-        }
-      );
+      await axios.delete(`${backendURL}/packages/${id}`, {
+        withCredentials: true,
+      });
       fetchPackages();
     } catch (err) {
       console.error("Delete failed", err);
@@ -225,6 +227,27 @@ export default function AdminPanel() {
                   className="w-full h-40 object-cover mt-2 rounded-md"
                 />
               )}
+              <div className="flex flex-row">
+                <div>
+                  <label className="font-medium text-sm dark:text-white text-black mb-1 ">
+                    Description Image
+                  </label>
+                </div>
+                <div>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        descriptionImage: e.target.files[0],
+                      })
+                    }
+                    className="w-full p-3 dark:bg-gray-400 dark:placeholder-gray-700 border border-gray-300 rounded-md"
+                  />
+                </div>
+              </div>
+
               <select
                 value={formData.category}
                 onChange={(e) =>

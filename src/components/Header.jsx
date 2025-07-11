@@ -25,6 +25,7 @@ export default function Header() {
 
   const handleLogout = async () => {
     await logout();
+    setIsMobileMenuOpen(false);
     navigate("/");
   };
 
@@ -93,6 +94,7 @@ export default function Header() {
             ) : (
               <Link
                 to="/login"
+                onClick={() => setIsMobileMenuOpen(false)}
                 className="flex items-center gap-2 text-gray-800 hover:bg-gray-300 dark:text-gray-100 dark:hover:bg-gray-500 focus:ring-4 focus:ring-gray-500 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 focus:outline-none"
               >
                 <HiOutlineLogin className="text-lg" />
@@ -110,6 +112,7 @@ export default function Header() {
               <li>
                 <NavLink
                   to="/"
+                  onClick={() => setIsMobileMenuOpen(false)}
                   className={({ isActive, isPending }) =>
                     `block py-2 pr-4 pl-3 duration-200  ${
                       isActive ? "text-blue-700" : "text-gray-700"
@@ -122,6 +125,7 @@ export default function Header() {
               <li>
                 <NavLink
                   to="/about"
+                  onClick={() => setIsMobileMenuOpen(false)}
                   className={({ isActive, isPending }) =>
                     `block py-2 pr-4 pl-3 duration-200  ${
                       isActive ? "text-blue-700" : "text-gray-700"
@@ -144,7 +148,10 @@ export default function Header() {
                       <NavLink
                         to="/services/tours"
                         className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
-                        onClick={() => setDropdownOpen(false)}
+                        onClick={() => {
+                          setDropdownOpen(false);
+                          setIsMobileMenuOpen(false);
+                        }}
                       >
                         Tour Packages
                       </NavLink>
@@ -153,7 +160,10 @@ export default function Header() {
                       <NavLink
                         to="/services/flights"
                         className="block px-4 py-2 hover:bg-gray-100  dark:hover:bg-gray-700"
-                        onClick={() => setDropdownOpen(false)}
+                        onClick={() => {
+                          setDropdownOpen(false);
+                          setIsMobileMenuOpen(false);
+                        }}
                       >
                         Flight Booking
                       </NavLink>
@@ -162,7 +172,10 @@ export default function Header() {
                       <NavLink
                         to="/services/hotels"
                         className="block px-4 py-2 hover:bg-gray-100  dark:hover:bg-gray-700"
-                        onClick={() => setDropdownOpen(false)}
+                        onClick={() => {
+                          setDropdownOpen(false);
+                          setIsMobileMenuOpen(false);
+                        }}
                       >
                         Hotel Booking
                       </NavLink>
@@ -174,6 +187,7 @@ export default function Header() {
               <li>
                 <NavLink
                   to="/contact"
+                  onClick={() => setIsMobileMenuOpen(false)}
                   className={({ isActive, isPending }) =>
                     `block py-2 pr-4 pl-3 duration-200  ${
                       isActive ? "text-blue-700" : "text-gray-700"
@@ -187,6 +201,7 @@ export default function Header() {
                 <li>
                   <NavLink
                     to={location.pathname.startsWith("/admin") ? "/" : "/admin"}
+                    onClick={() => setIsMobileMenuOpen(false)}
                     className={({ isActive }) =>
                       `block py-2 pr-4 pl-3 duration-200  ${
                         isActive ? "text-blue-700" : "text-gray-700"
