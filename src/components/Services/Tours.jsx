@@ -107,9 +107,9 @@ export default function Tours() {
                   <h3 className="text-lg font-semibold dark:text-white text-gray-800">
                     {pkg.name}
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-200 text-sm mt-1">
+                  {/* <p className="text-gray-600 dark:text-gray-200 text-sm mt-1">
                     {pkg.description.substring(0, 80)}...
-                  </p>
+                  </p> */}
                   <Link to={`/services/tours/${pkg._id}`}>
                     <button className="mt-3 text-blue-600 dark:text-blue-400 hover:underline font-medium">
                       View Details

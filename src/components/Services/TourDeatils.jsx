@@ -59,9 +59,10 @@ const TourDetails = () => {
           {tour.name}
         </h1>
 
-        <p className="text-lg font-semibold dark:text-gray-200 text-gray-700 leading-relaxed text-justify">
-          {tour.description}
-        </p>
+        <div
+          className="text-lg font-semibold dark:text-gray-200 text-gray-700 leading-relaxed text-justify"
+          dangerouslySetInnerHTML={{ __html: tour.description }}
+        ></div>
 
         {isDescriptionImage && (
           <div className="mt-6 flex justify-center">

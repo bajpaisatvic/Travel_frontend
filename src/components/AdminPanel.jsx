@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
+import RichTextEditor from "./RichTextEditor.jsx";
 const categories = [
   "Adventure",
   "Relaxation",
@@ -192,14 +192,11 @@ export default function AdminPanel() {
                 className="w-full p-3 dark:bg-gray-400 dark:placeholder-gray-700 border border-gray-300  rounded-md focus:ring-2 focus:ring-blue-400"
                 required
               />
-              <textarea
-                placeholder="Description"
-                value={formData.description}
-                onChange={(e) =>
-                  setFormData({ ...formData, description: e.target.value })
+              <RichTextEditor
+                content={formData.description}
+                onChange={(value) =>
+                  setFormData({ ...formData, description: value })
                 }
-                className="w-full p-3 dark:bg-gray-400 dark:placeholder-gray-700 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400"
-                required
               />
               <input
                 type="number"
@@ -293,9 +290,9 @@ export default function AdminPanel() {
                         <h4 className="text-lg font-bold dark:text-white text-gray-800">
                           {pkg.name}
                         </h4>
-                        <p className="text-gray-600 dark:text-gray-200 text-sm mt-1">
+                        {/* <p className="text-gray-600 dark:text-gray-200 text-sm mt-1">
                           {pkg.description.substring(0, 80)}...
-                        </p>
+                        </p> */}
                         <p className="text-blue-600 dark:text-gray-100 font-medium mt-2">
                           ₹{pkg.price}
                         </p>
