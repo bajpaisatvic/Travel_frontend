@@ -50,12 +50,14 @@ export default function Footer() {
                   </a>
                 </li>
                 <li>
-                  <Link
-                    to="https://www.facebook.com/bumpedtravel"
+                  <a
+                    href="https://www.facebook.com/bumpedtravel/"
                     className="hover:underline"
+                    target="_blank"
+                    rel="noreferrer"
                   >
                     Facebook
-                  </Link>
+                  </a>
                 </li>
               </ul>
             </div>
