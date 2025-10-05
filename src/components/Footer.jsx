@@ -41,7 +41,7 @@ export default function Footer() {
               <ul className="text-gray-500 dark:text-gray-300 font-medium">
                 <li className="mb-4">
                   <a
-                    href="https://www.instagram.com/bumpedtravel/"
+                    href="https://www.instagram.com/bumpedtravel25/"
                     className="hover:underline"
                     target="_blank"
                     rel="noreferrer"
@@ -50,7 +50,10 @@ export default function Footer() {
                   </a>
                 </li>
                 <li>
-                  <Link to="/" className="hover:underline">
+                  <Link
+                    to="https://www.facebook.com/bumpedtravel?rdid=cTugdZY7S88yk3oq&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F19tSa2vt6r%2F#"
+                    className="hover:underline"
+                  >
                     Facebook
                   </Link>
                 </li>
