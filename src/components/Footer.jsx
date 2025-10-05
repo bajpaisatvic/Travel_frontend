@@ -16,6 +16,7 @@ export default function Footer() {
               />
             </Link>
           </div>
+
           <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
             <div>
               <h2 className="mb-6 text-sm font-semibold dark:text-white text-gray-900 uppercase">
@@ -34,6 +35,7 @@ export default function Footer() {
                 </li>
               </ul>
             </div>
+
             <div>
               <h2 className="mb-6 text-sm font-semibold text-gray-900 dark:text-white uppercase">
                 Follow us
@@ -44,7 +46,7 @@ export default function Footer() {
                     href="https://www.instagram.com/bumpedtravel25/"
                     className="hover:underline"
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                   >
                     Instagram
                   </a>
@@ -54,25 +56,26 @@ export default function Footer() {
                     href="https://www.facebook.com/bumpedtravel/"
                     className="hover:underline"
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                   >
                     Facebook
                   </a>
                 </li>
               </ul>
             </div>
+
             <div>
               <h2 className="mb-6 text-sm font-semibold text-gray-900 dark:text-white uppercase">
                 Legal
               </h2>
               <ul className="text-gray-500 dark:text-gray-300 font-medium">
                 <li className="mb-4">
-                  <Link to="#" className="hover:underline">
+                  <Link to="/privacy" className="hover:underline">
                     Privacy Policy
                   </Link>
                 </li>
                 <li>
-                  <Link to="#" className="hover:underline">
+                  <Link to="/terms" className="hover:underline">
                     Terms &amp; Conditions
                   </Link>
                 </li>
@@ -80,30 +83,39 @@ export default function Footer() {
             </div>
           </div>
         </div>
+
         <hr className="my-6 border-gray-200 sm:mx-auto lg:my-8" />
+
         <div className="sm:flex sm:items-center sm:justify-between">
           <span className="text-sm text-gray-500 dark:text-gray-300 sm:text-center">
-            © 2025
-            <a href="#" className="hover:underline">
+            © 2025{" "}
+            <a href="/" className="hover:underline">
               satvicbajpai
             </a>
             . All Rights Reserved.
           </span>
+
           <div className="flex mt-4 space-x-5 sm:justify-center sm:mt-0">
-            <Link
-              to="#"
+            {/* Use <a> for external URLs (icons) */}
+            <a
+              href="https://www.facebook.com/bumpedtravel/"
               className="text-gray-500 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
             >
               <FaFacebookF className="w-4 h-4" />
-              <span className="sr-only">Facebook</span>
-            </Link>
-            <Link
-              to="https://www.instagram.com/bumpedtravel/"
+            </a>
+
+            <a
+              href="https://www.instagram.com/bumpedtravel25/"
               className="text-gray-500 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
             >
               <FaInstagram className="w-4 h-4" />
-              <span className="sr-only">Instagram</span>
-            </Link>
+            </a>
           </div>
         </div>
       </div>
